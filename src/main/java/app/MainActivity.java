@@ -50,8 +50,7 @@ import app.Control.MessageHandler;
 import app.Control.RoundedTransformation;
 import app.Control.Utils;
 import app.Fragments.AboutFragment;
-
-import app.Fragments.MyGalleryFragment;
+import app.Fragments.GalleryFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -369,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case GALLEY_INDEX:
 
-                    returnFragment = MyGalleryFragment.newInstance();
+                    returnFragment = GalleryFragment.newInstance();
                     break;
                 case RADIO_INDEX:
                     //returnFragment = RadioFragment.newInstance();
