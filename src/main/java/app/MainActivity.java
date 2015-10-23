@@ -2,11 +2,14 @@ package app;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -51,6 +54,9 @@ import app.Control.RoundedTransformation;
 import app.Control.Utils;
 import app.Fragments.AboutFragment;
 import app.Fragments.GalleryFragment;
+import app.Fragments.RadioFragment;
+import app.Services.RadioService;
+import app.Services.RadioService.MyBinder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Buttons holder
     Button[] navigationButtons = new Button[TOTAL_NUMBER_OF_TABS];
+
 
 
     @Override
@@ -200,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Navigate to default tab
         navigationButtons[DEFAULT_TAB_INDEX].callOnClick();
+
+
     }
 
     @Override
@@ -371,8 +380,8 @@ public class MainActivity extends AppCompatActivity {
                     returnFragment = GalleryFragment.newInstance();
                     break;
                 case RADIO_INDEX:
-                    //returnFragment = RadioFragment.newInstance();
-                    returnFragment = AboutFragment.newInstance();
+
+                    returnFragment = RadioFragment.newInstance();
                     break;
                 case NAVIGATE_INDEX:
                     //returnFragment = NavigateFragment.newInstance();

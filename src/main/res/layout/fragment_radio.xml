@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/radioChannel"
+            android:layout_above="@+id/stopBut"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/galgalaz" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/playBut"
+            android:src="@drawable/play"
+            android:onClick="startRadio"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/pausebut"
+            android:layout_alignStart="@+id/pausebut"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/stopBut"
+            android:src="@drawable/stop"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/playBut"
+            android:onClick="stopRadioService"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/pausebut"
+            android:src="@drawable/pause"
+            android:onClick="pauseRadio"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:clickable="true" />
+
+    </RelativeLayout>
+</LinearLayout>
