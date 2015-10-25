@@ -46,8 +46,8 @@ public class AboutFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
         // text view
-        TextView aboutText = (TextView) v.findViewById(R.id.about_textview);
-        aboutText.setBackgroundColor(Color.TRANSPARENT);
+
+
 
         return v;
     }

@@ -21,7 +21,6 @@
             android:layout_height="150dp"
             android:id="@+id/playBut"
             android:src="@drawable/play"
-            android:onClick="startRadio"
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/pausebut"
             android:layout_alignStart="@+id/pausebut"
@@ -34,7 +33,6 @@
             android:src="@drawable/stop"
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@+id/playBut"
-            android:onClick="stopRadioService"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:clickable="true" />
@@ -44,7 +42,6 @@
             android:layout_height="150dp"
             android:id="@+id/pausebut"
             android:src="@drawable/pause"
-            android:onClick="pauseRadio"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:visibility="invisible"

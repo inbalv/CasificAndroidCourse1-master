@@ -28,6 +28,7 @@ public class RadioFragment extends Fragment {
     ImageView pauseBut ;
     ImageView stopBut ;
     View v;
+    Intent intent;
 
     public static RadioFragment newInstance() {
         RadioFragment fragment = new RadioFragment();
@@ -53,13 +54,15 @@ public class RadioFragment extends Fragment {
         pauseBut = (ImageView) v.findViewById(R.id.pausebut);
          stopBut = (ImageView) v.findViewById(R.id.stopBut);
 
+// Define setOnClicklistener that call to a boundservice functions, the radioState variable
+        //return if the connection is done and change visibility of the UI
         playBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (radioService != null) {
-                    if (isBound = true) {
+                    if (isBound == true) {
                         boolean radioState= radioService.playMyRadio();
-                        if (radioState=true){
+                        if (radioState==true){
                             playBut.setVisibility(View.INVISIBLE);
                             pauseBut.setVisibility(View.VISIBLE);
                         }
@@ -72,9 +75,24 @@ public class RadioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (radioService != null) {
-                    if (isBound = true) {
+                    if (isBound == true) {
                         boolean radioState= radioService.pauseMyRadio();
-                        if (radioState=true){
+                        if (radioState==false){
+                            pauseBut.setVisibility(View.INVISIBLE);
+                            playBut.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+        });
+// this function calls to stopMyRadio in the service and execute stopSlef()
+        stopBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (radioService != null) {
+                    if (isBound == true) {
+                        boolean radioState= radioService.stopMyRadio();
+                        if (radioState==false){
                             pauseBut.setVisibility(View.INVISIBLE);
                             playBut.setVisibility(View.VISIBLE);
                         }
@@ -83,21 +101,7 @@ public class RadioFragment extends Fragment {
             }
         });
 
-        stopBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (radioService != null) {
-                    if (isBound = true) {
-                        boolean radioState= radioService.stopMyRadio();
-                        if (radioState=true){
-                            pauseBut.setVisibility(View.INVISIBLE);
-                            playBut.setVisibility(View.VISIBLE);
-                        }
-                    }
-                }
-            }
-        });
-        //service declaration;
+        //service declaration and binding process;
 
         ServiceConnection mConnection = new ServiceConnection() {
             @Override
@@ -112,7 +116,7 @@ public class RadioFragment extends Fragment {
                 isBound = false;
             }
         };
-        Intent intent = new Intent(getActivity(), RadioService.class);
+       intent = new Intent(getActivity(), RadioService.class);
         getActivity().bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
 
@@ -138,8 +142,6 @@ public class RadioFragment extends Fragment {
     public void onResume() {
         super.onResume();
     }
-
-
 
 
 }
